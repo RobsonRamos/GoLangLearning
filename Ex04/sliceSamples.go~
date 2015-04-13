@@ -26,7 +26,7 @@ func main(){
 	n:= []int{ 22 }
 	n = append(n, s...)
 	
-	fmt.Println(s)
+	fmt.Println(n)
 
 	// Podemos fazer assim tb
 	x := append([]int{ 22 }, s...)
