@@ -35,4 +35,8 @@ func main(){
 	// Removendo valores
 	s = []int {1, 2, 4, 5, 6 }
 	s = s[:3]
+
+	// removendo valores do meio
+	s := []int{10, 20, 30, 40, 50, 60}
+	s = append(s[:2], s[4:]...)
 }

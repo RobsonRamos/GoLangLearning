@@ -31,4 +31,8 @@ func main(){
 	// Podemos fazer assim tb
 	x := append([]int{ 22 }, s...)
 	fmt.Println(x)
+
+	// Removendo valores
+	s = []int {1, 2, 4, 5, 6 }
+	s = s[:3]
 }
