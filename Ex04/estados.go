@@ -12,6 +12,9 @@ func main(){
 	estados["AM"] = Estado{"Amazonas", 3807923, "Manaus"}
 	estados["SE"] =  Estado{"Sergipe", 2228489, "Aracaju"}
 	fmt.Println(estados)	
+
+	delete(estados, "GO")
+	fmt.Println(estados)	
 }
 
 
