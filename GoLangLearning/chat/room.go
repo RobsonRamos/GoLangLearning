@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/RobsonRamos/GoLangLearning/GoLangLearning/chat/trace"
+	"./trace"
 	"log"
 	"github.com/gorilla/websocket"
 	"net/http"
