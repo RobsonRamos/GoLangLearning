@@ -4,6 +4,8 @@ import (
 	"errors"
 	"io"
 	"strings"
+	"fmt"
+	"crypto/md5"
 )
 
 var ErrNoAvatarURL = errors.New("chat: Unable to get an avatar URL.")
