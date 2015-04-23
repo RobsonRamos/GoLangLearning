@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"crypto/md5"
+	"io"
 )
 
 type authHandler struct {
@@ -61,18 +63,33 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Fatalln("Error when trying to complete auth for", provider, "-", err)
 		}
-
-		// get the user
 		user, err := provider.GetUser(creds)
+		
 		if err != nil {
 			log.Fatalln("Error when trying to get user from", provider, "-", err)
 		}
+		m := md5.New()
+
+		io.WriteString(m, strings.ToLower(user.Name()))
+		userId := fmt.Sprintf("%x", m.Sum(nil))
+
+		// get the user
+		
+		
+		authCookieValue := objx.New(map[string]interface{}{
+			"userid"		: 		userId,
+			"name"			: 		user.Name(),
+			"avatar_url" 	:		user.AvatarURL(),
+			"email"			:		user.Email(),
+		}).MustBase64()
 
 		// save some data
-		authCookieValue := objx.New(map[string]interface{}{
-			"name": 		user.Name(),
-			"avatar_url" :	user.AvatarURL(),
-		}).MustBase64()
+		/*authCookieValue := objx.New(map[string]interface{}{
+			"name"			: 		user.Name(),
+			"avatar_url" 	:		user.AvatarURL(),
+			"email"			:		user.Email(),
+		}).MustBase64()*/
+
 		http.SetCookie(w, &http.Cookie{
 			Name:  "auth",
 			Value: authCookieValue,

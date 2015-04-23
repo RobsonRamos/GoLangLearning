@@ -39,7 +39,7 @@ func TestGravatarAvatar(t *testing.T) {
 
 	var gravatarAvitar GravatarAvatar
 	client := new(client)
-	client.userData[string]interface{}{"email" : "MyEmailAdress@example.com"}
+	client.userData = map[string]interface{}{ "userid" : "0bc83cb571cd1c50ba6f3e8a78ef1346"}
 	url, err := gravatarAvitar.GetAvatarURL(client)
 
 	if err != nil {
@@ -60,7 +60,7 @@ func TestGravatarAvatar(t *testing.T) {
 	}*/
 
 }
-/*
+
 func TestFileSystemAvatar(t *testing.T) {
 
 	// make a test avatar file
@@ -74,8 +74,9 @@ func TestFileSystemAvatar(t *testing.T) {
 	defer os.Remove(filename)
 
 	var fileSystemAvatar FileSystemAvatar
-	user := &chatUser{uniqueID: "abc"}
-
+	//user := &chatUser{uniqueID: "abc"}
+	client := new(client)
+	client.userData = map[string]interface{}{ "userid" : "abc"}
 	url, err := fileSystemAvatar.GetAvatarURL(user)
 	if err != nil {
 		t.Errorf("FileSystemAvatar.GetAvatarURL should not return an error: %s", err)
@@ -84,4 +85,4 @@ func TestFileSystemAvatar(t *testing.T) {
 		t.Errorf("FileSystemAvatar.GetAvatarURL wrongly returned %s", url)
 	}
 
-}*/
+}
