@@ -45,7 +45,7 @@ func main() {
 		facebook.New("537611606322077", "f9f4d77b3d3f4f5775369f5c9f88f65e", "http://localhost:8080/auth/callback/facebook"),
 	)
 
-	r := NewRoom(UseGravatar)
+	r := NewRoom(UseFileSystemAvatar)
 
 	//http.Handle("/", &templateHandler{ filename : "chat.html" })
 	http.Handle("/chat", MustAuth(&templateHandler{filename: "chat.html"}))

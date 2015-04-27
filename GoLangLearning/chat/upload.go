@@ -8,22 +8,22 @@ import (
 )
 
 // uploaderHandler expects two fields to be posted, userid and avatarFile.
-func ServeHTTP(w http.ResponseWriter, req *http.Request) {
+func uploaderHandler(w http.ResponseWriter, req *http.Request) {
 	userId := req.FormValue("userid")
 	file, header, err := req.FormFile("avatarFile")
 	if err != nil {
-		io.WriteString(w, err.Error())
+		io.WriteString(w, err.Error() +  " + 1")
 		return
 	}
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
-		io.WriteString(w, err.Error())
+		io.WriteString(w, err.Error() +  " + 2")
 		return
 	}
-	filename := path.Join("avatars", userId+path.Ext(header.Filename))
+	filename := path.Join("avatars", userId + path.Ext(header.Filename))
 	err = ioutil.WriteFile(filename, data, 0777)
 	if err != nil {
-		io.WriteString(w, err.Error())
+		io.WriteString(w, err.Error() +  userId)
 		return
 	}
 	io.WriteString(w, "Successful")

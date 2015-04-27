@@ -1,12 +1,9 @@
 package main
 
 import (
-	/*"io/ioutil"
+	"io/ioutil"
 	"os"
 	"path"
-
-	gomniauthtest "github.com/stretchr/gomniauth/test"
-*/
 	"testing"
 )
 
@@ -77,7 +74,7 @@ func TestFileSystemAvatar(t *testing.T) {
 	//user := &chatUser{uniqueID: "abc"}
 	client := new(client)
 	client.userData = map[string]interface{}{ "userid" : "abc"}
-	url, err := fileSystemAvatar.GetAvatarURL(user)
+	url, err := fileSystemAvatar.GetAvatarURL(client)
 	if err != nil {
 		t.Errorf("FileSystemAvatar.GetAvatarURL should not return an error: %s", err)
 	}
