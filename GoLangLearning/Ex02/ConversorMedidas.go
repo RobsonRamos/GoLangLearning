@@ -21,7 +21,7 @@ func main(){
 		unidadeDestino = "farenheint"	
 	} else if unidadeOrigem == "quilometros"{
 		unidadeDestino = "milhas"
-	} else{
+	} else {
 		fmt.Printf("%s nao eh uma unidade conhecida!")
 		os.Exit(1)
 	}
