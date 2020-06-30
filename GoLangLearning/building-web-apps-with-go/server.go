@@ -11,9 +11,6 @@ import (
 func main(){
 
 	r := mux.NewRouter().StrictSlash(false)
-	
-
-
 	// Posts Collection
 	posts := r.Path("/posts").Subrouter()
 	posts.Methods("GET").HandlerFunc(PostsIndexHandler)
@@ -65,7 +62,6 @@ func GetMarkdown(w http.ResponseWriter, r *http.Request){
 	if err != nil{
 		w.Write([]byte(err.Error()))
 	}
-
 	fmt.Println(string(data))
 	w.Write(data)		
 }
